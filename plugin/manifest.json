@@ -1,0 +1,36 @@
+{
+
+  "description": "http reponse body modifier",
+  "manifest_version": 2,
+  "name": "response modifier",
+  "version": "0.1",
+  "icons": {
+    "48": "icons/flash.svg",
+    "96": "icons/flash.svg"
+  },
+
+  "browser_action": {
+    "default_icon": "icons/flash.svg",
+    "default_title": "responseModifier"
+  },
+
+  "options_ui": {
+    "page": "options/options.html",
+    "browser_style": true
+  },
+
+  "permissions": [
+    "webRequest", "webRequestBlocking", "<all_urls>"
+  ],
+
+  "background": {
+    "scripts": ["background.js"]
+  },
+
+  "applications": {
+    "gecko": {
+      "strict_min_version": "57.0a1"
+    }
+  }
+
+}
