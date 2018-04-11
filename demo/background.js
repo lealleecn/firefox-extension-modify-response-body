@@ -25,3 +25,14 @@ browser.webRequest.onBeforeRequest.addListener(
   { urls: ["https://inv-veri.chinatax.gov.cn/*"], types: ["main_frame", "sub_frame"]},
   ["blocking"]
 );
+
+let removeXFrameOptions = (e) => {
+    e.responseHeaders = e.responseHeaders.filter(header => header.name !== 'X-Frame-Options');
+    return {responseHeaders: e.responseHeaders};
+}
+
+browser.webRequest.onHeadersReceived.addListener(
+    removeXFrameOptions,
+    { urls: ["https://inv-veri.chinatax.gov.cn/*"], types: ["main_frame", "sub_frame"]},
+    ["blocking", "responseHeaders"]
+);
