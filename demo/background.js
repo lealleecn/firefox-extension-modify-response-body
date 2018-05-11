@@ -11,7 +11,7 @@ let listener = function (details) {
     let str = decoder.decode(event.data, {stream: true});
     if (str.indexOf(replaceStr) > -1){
       str = str.replace(new RegExp(replaceStr, 'g'), '');
-      str = str + injectjs;
+      str = str.replace('<head>', '<head>'+ injectjs);
     }
     filter.write(encoder.encode(str));
     filter.disconnect();
